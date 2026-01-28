@@ -1,0 +1,8 @@
+version: 2
+sources:
+- name: staging_patient
+  schema: staging_patient
+  tables:
+  - name: Form_Responses_1
+    identifier: Form_Responses_1
+    description: ''
