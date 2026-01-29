@@ -1,0 +1,1 @@
+SELECT * FROM  {{ source ('test', 'mock_data_csv') }}
