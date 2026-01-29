@@ -37,6 +37,16 @@ clinic as (
     group by 1, 2, 3
 ),
 
+health_camp as (
+    select
+        medicine,
+        month,
+        month_num,
+        sum(camp_liquidation) as camp_liquidation
+    from {{ ref('health_camp_medicine_usage') }}
+    group by 1, 2, 3
+),
+
 clinic_with_labels as (
     select
         medicine,
@@ -62,21 +72,32 @@ clinic_with_labels as (
 
 combined as (
     select
-        coalesce(i.month, c.month_label) as month,
-        coalesce(i.medicine, c.medicine) as medicine,
+        coalesce(i.month, c.month_label, h.month) as month,
+        coalesce(i.medicine, c.medicine, h.medicine) as medicine,
         c.clinic_liquidation,
+        h.camp_liquidation,
         i.inventory_liquidation,
-        coalesce(i.month_num, c.month_num) as month_num
+        coalesce(i.month_num, c.month_num, h.month_num) as month_num
     from inventory i
     full outer join clinic_with_labels c
         on i.medicine = c.medicine
        and i.month_num = c.month_num
+    full outer join health_camp h
+        on coalesce(i.medicine, c.medicine) = h.medicine
+       and coalesce(i.month_num, c.month_num) = h.month_num
 )
 
 select
     month,
     medicine,
     clinic_liquidation,
-    inventory_liquidation
+    camp_liquidation,
+    inventory_liquidation,
+    coalesce(clinic_liquidation, 0) + coalesce(camp_liquidation, 0) as total_usage_liquidation,
+    case 
+        when inventory_liquidation > 0 
+        then (coalesce(clinic_liquidation, 0) + coalesce(camp_liquidation, 0)) * 100.0 / inventory_liquidation
+        else null
+    end as usage_vs_inventory_percentage
 from combined
 order by month_num, medicine

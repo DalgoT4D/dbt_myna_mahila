@@ -29,4 +29,16 @@ sources:
     identifier: October
   - name: September
     identifier: September
+- name: staging_health_camp
+  schema: staging_health_camp
+  tables:
+  - name: Form_Responses_1
+    identifier: Form_Responses_1
+- name: staging_college
+  schema: staging_college
+  tables:
+  - name: Form_Responses_1
+    identifier: Form_Responses_1
+  - name: Data
+    identifier: Data
 
