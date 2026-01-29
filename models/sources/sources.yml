@@ -6,3 +6,27 @@ sources:
   - name: Form_Responses_1
     identifier: Form_Responses_1
     description: ''
+- name: staging_medicines
+  schema: staging_medicines
+  tables:
+  - name: April
+    identifier: April
+  - name: August
+    identifier: August
+  - name: December
+    identifier: December
+  - name: January
+    identifier: January
+  - name: July
+    identifier: July
+  - name: June
+    identifier: June
+  - name: May
+    identifier: May
+  - name: November
+    identifier: November
+  - name: October
+    identifier: October
+  - name: September
+    identifier: September
+
