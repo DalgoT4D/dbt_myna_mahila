@@ -41,10 +41,20 @@ sources:
     identifier: Form_Responses_1
   - name: Data
     identifier: Data
+
+- name: test
+  schema: staging_mock2
+  tables:
+  - name: mock_data_csv
+    identifier: MOCK_DATA_csv
+
 - name: staging_mock1
   schema: staging_mock1
   tables:
   - name: Mock_sheet
     identifier: MOCK_DATA_csv
 
+
+    
+    
 

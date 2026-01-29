@@ -1,4 +1,4 @@
-dbt_myna_mahila:
+dbtrepo:
   outputs:
     dev:
       type: postgres
