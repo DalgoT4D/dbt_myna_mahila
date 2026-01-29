@@ -1,0 +1,1 @@
+SELECT * FROM {{ source('staging_mock1', 'Mock_sheet') }}

@@ -1,0 +1,1 @@
+select email, language, phone, grade, age from {{ ref('stg_mock1') }}

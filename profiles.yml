@@ -1,0 +1,22 @@
+dbt_myna_mahila:
+  outputs:
+    dev:
+      type: postgres
+      host: dalgo-staging-warehouses.c4hvhyuxrcet.ap-south-1.rds.amazonaws.com
+      user: myna_mahila_bootcamp_user
+      password: "ob3g(6K{O@4K"
+      port: 5432
+      dbname: myna_mahila_bootcamp
+      schema: dev
+      threads: 4
+    prod:
+      type: postgres
+      host: dalgo-staging-warehouses.c4hvhyuxrcet.ap-south-1.rds.amazonaws.com
+      user: myna_mahila_bootcamp_user
+      password: "ob3g(6K{O@4K"
+      port: 5432
+      dbname: myna_mahila_bootcamp
+      schema: prod
+      threads: 4
+
+  target: dev
